@@ -1,56 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CLock</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital@1&display=swap" rel="stylesheet">
-</head>
-
-<body>
-    <div id="clock">
-        <h2>The current time is</h2>
+<!-- Created By CodingNepal -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <!-- Somehow I got an error, so I comment the title, just uncomment to show -->
+    <!-- <title>Digital Clock with Glowing Effect | CodingNepal</title> -->
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="display">
         <div id="time">
-            <div><span id="hour">00</span><span>Hours</span></div>
-            <div><span id="minutes">00</span><span>Minutes</span></div>
-            <div><span id="seconds">00</span><span>Seconds</span></div>
-            <div><span id="ampm">AM</span></div>
-        </div>
+</div>
+</div>
+<span></span>
+      <span></span>
     </div>
-    <script type="text/javascript">
-        function clock() {
-            var hours = document.getElementById('hour');
-            var minutes = document.getElementById('minutes');
-            var seconds = document.getElementById('seconds');
-            var ampm = document.getElementById('ampm');
-
-            var h = new Date().getHours();
-            var m = new Date().getMinutes();
-            var s = new Date().getSeconds();
-            var am = "AM";
-
-            if (h > 12) {
-                h = h - 12;
-                var am = "PM"
-            }
-
-
-            h = (h < 10) ? "0" + h : h
-            m = (m < 10) ? "0" + m : m
-            s = (s < 10) ? "0" + s : s
-
-            hours.innerHTML = h;
-            minutes.innerHTML = m;
-            seconds.innerHTML = s;
-            ampm.innerHTML = am;
-
-
+<script>
+      setInterval(()=>{
+        const time = document.querySelector(".display #time");
+        let date = new Date();
+        let hours = date.getHours();
+        let minutes = date.getMinutes();
+        let seconds = date.getSeconds();
+        let day_night = "AM";
+        if(hours > 12){
+          day_night = "PM";
+          hours = hours - 12;
         }
-        var interval = setInterval(clock, 1000);
+        if(seconds < 10){
+          seconds = "0" + seconds;
+        }
+        if(minutes < 10){
+          minutes = "0" + minutes;
+        }
+        if(hours < 10){
+          hours = "0" + hours;
+        }
+        time.textContent = hours + ":" + minutes + ":" + seconds + " "+ day_night;
+      });
     </script>
-</body>
 
+  </body>
 </html>
